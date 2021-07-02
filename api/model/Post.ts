@@ -7,7 +7,7 @@ export class Post{
   postItemList:string|undefined;
   partitionKey: string | undefined;
   startDate?:Date;
-  endDate:Date;
+  endDate:Date| undefined;
 
 
   constructor ( Name?:string,description?:string,startDate?:Date) {
