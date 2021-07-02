@@ -41,6 +41,24 @@ export default class PostrClient {
 
         return results;
     };
+        public async getOnePost (userId: string): Promise<Post> {
+        
+        const querySpec = {
+            query: 'SELECT * FROM c WHERE c.id=@userId ',
+            parameters: [
+                { name: '@userId', value: userId }
+                      ]
+        };
+        const { resources: results } = await this.client
+            .database(this.databaseId)
+            .container(this.containerName)
+            .items.query(querySpec)
+            .fetchAll();
+
+        
+
+        return results;
+    };
     public async getAllPosts (): Promise<Post[]> {
         
         const querySpec = {
