@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script  src="./postManager.js">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.require {
+    color: #666;
+}
+label small {
+    color: #999;
+    font-weight: normal;
+}
+body
+{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FFE4B5;
+}
+.navbar
+{
+    background-color: #191970;
+}
+.navbar .brand-navbar img:hover
+{
+    opacity: 0.7;
+}
+.navbar ul
+{
+padding: 0px 30px 0px 0px;
+}
+.navbar ul li a{
+    color: white;
+    margin: 10px 0px 0px 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.navbar ul li a .fas{
+    padding-right:5px; 
+    padding-left:5px; 
+}
+.navbar ul li a:hover{
+    color: #15b000;
+}
+.navbar ul li.active > a {
+    color: #15b000;
+    font-weight: bold;
+    font-size: 12px;
+    border-left: 3px solid #15b000;
+    border-radius: 40px;
+}
+.iconStyle
+{
+    color: #15b000;
+}
+
+</style>
+
+</head>
+<body>
+ <nav class="navbar navbar-expand-lg navStyle">
+            <a class="brand-navbar" href="#"><img src="image/logo.png" alt="Responsive image" height="60px"></a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#mainMenu">
+                <span><i class="fas fa-align-right iconStyle"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenu">
+                <ul class="navbar-nav ml-auto navList">
+                    <li class="nav-item active"><a href="#" class="nav-link"><i class="fas fa-home"></i>HOME<span class="sr-only">(current)</span></a></li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"><i class="fas fa-briefcase"></i>Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+<div class="container">
+	<div class="row">
+	    
+	    <div class="col-md-8 col-md-offset-2">
+	        
+    		<h1>Create post</h1>
+    		
+    		<form action="" method="POST">
+    		    
+    		      		    
+    		    <div class="form-group">
+    		        <label for="title">Title <span class="require">*</span></label>
+    		        <input type="text" class="form-control" name="title" />
+    		    </div>
+    		    
+    		    <div class="form-group">
+    		        <label for="description">Description</label>
+    		        <textarea rows="5" class="form-control" name="description" ></textarea>
+    		    </div>
+    		    
+    		    
+                
+                <div class="form-group">
+                <label for="date">Expected Start Date</label>
+                <div class='input-group date' id='datetimepicker1'>
+                
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                </div>
+                <h3>to </h3>
+                <div class="form-group">
+                <label for="date">Expected End Date</label>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+
+    <script>$('select').selectpicker();</script>
+<select class="selectpicker" multiple data-live-search="true">
+  <option value="" disabled selected>Choose youritem</option>
+      <option value="1">Books</option>
+      <option value="2">Toys</option>
+      <option value="3">Clothes</option>
+      <option value="4">Stationary</option>
+      <option value="5">Electronics</option>
+</select>
+    
+            </div>
+    		    
+    		    <div class="form-group">
+    		        <button type="submit" class="btn btn-primary">
+    		            Create
+    		        </button>
+    		        <button class="btn btn-default">
+    		            Cancel
+    		        </button>
+    		    </div>
+    		    
+    		</form>
+		</div>
+
+</body>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</html>

@@ -6,9 +6,8 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     context.log('HTTP trigger function processed a request.');
     const donorClient= new DonorClient();
      if (req.method === 'POST')  {
-         if(req.params.id)
-         await createPostIdList(context,req,req.body,req.params.id)
-         else
+         if(!req.params.id)
+        
         await createProfile(context, req, req.body);
         return;
     }
@@ -17,23 +16,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         return;
     }
 
-    async function createPostIdList (context: Context, request: HttpRequest, donor:Donor) {
-       
-
-        if (donor.email &&donor.phone &&donor.address  ) {
-            if (!donor.id) {
-                donor.id = uuidv4();
-            }
-            donor.partitionKey = donor.id;
-            await donorClient.createUpdateProfile(donor);
-            context.res = { status: 204 };
-        } else {
-            context.res = {
-                status: 400,
-                body: 'Please provide a valid donor Profile'
-            };
-        }
-    };
+   
     async function createProfile (context: Context, request: HttpRequest, donor:Donor) {
        
 
