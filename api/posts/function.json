@@ -9,7 +9,7 @@
         "get",
         "post","put"
       ],
-      "route": "posts/{id?}"
+      "route": "posts/{id?}/{subEntity?}"
     },
     {
       "type": "http",

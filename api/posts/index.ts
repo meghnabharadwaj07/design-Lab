@@ -7,13 +7,17 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     const postClient= new PostClient();
      if (req.method === 'POST')  {
         await createPost(context, req, req.body,req.params.id);
+        console.log(req.params.id);
         return;
     }
     if (req.method === 'GET')  {
       if(!req.params.id)
-       await getAllPosts(context);
-      else
-        await getPosts(context, req.params.id);
+       await getAllPosts(context);//get all posts
+      else if (!req.params.subEntity)
+       await getPost(context, req.params.id);// get post with id
+        
+        else
+        await getPosts(context, req.params.id);//get posts with ngo id
         return;
     }
     if (req.method === 'PUT')  {
@@ -65,6 +69,14 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     async function getAllPosts (context: Context) {
        
         const post = await postClient.getAllPosts();
+        context.res = {
+            status: 200,
+            body: post
+        };
+    }
+        async function getPost (context: Context,  postId:string) {
+       console.log("hi");
+        const post = await postClient.getOnePost(postId);
         context.res = {
             status: 200,
             body: post
