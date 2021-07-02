@@ -7,8 +7,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     const postClient= new PostClient();
      if (req.method === 'POST')  {
         await createPost(context, req, req.body,req.params.id);
-        console.log(req.params.id);
-        return;
+               return;
     }
     if (req.method === 'GET')  {
       if(!req.params.id)
@@ -61,25 +60,43 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     async function getPosts (context: Context,  ngoId:string) {
        
         const post = await postClient.getPost(ngoId);
+          if(!post)
+        {
         context.res = {
             status: 200,
             body: post
+        };
+        }
+        else
+        context.res = {
+            status: 400,
+            body:'Invalid Invalid'
         };
     }
     async function getAllPosts (context: Context) {
        
         const post = await postClient.getAllPosts();
+        
         context.res = {
             status: 200,
             body: post
         };
+      
     }
         async function getPost (context: Context,  postId:string) {
-       console.log("hi");
+       
         const post = await postClient.getOnePost(postId);
+          if(!post)
+        {
         context.res = {
             status: 200,
             body: post
+        };
+        }
+        else
+        context.res = {
+            status: 400,
+            body:'Invalid id'
         };
     }
    

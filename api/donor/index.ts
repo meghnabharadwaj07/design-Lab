@@ -37,11 +37,19 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     async function getProfile (context: Context,  userId:string) {
        
         const donor = await donorClient.getProfile(userId);
-        console.log(donor);
+       if(donor)
+       {
         context.res = {
             status: 200,
             body: donor
         };
+       }
+       else{
+           context.res = {
+            status: 400,
+            body: 'Please provide a valid donor id'
+        }; 
+       }
     }
    
 
