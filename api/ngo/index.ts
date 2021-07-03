@@ -1,10 +1,10 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-import {Donor} from '../model/Donor';
-import DonorClient from'../shared/DonorClient';
+import {Ngo} from '../model/Ngo';
+import NgoClient from'../shared/NgoClient';
 import { v4 as uuidv4 } from 'uuid';
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
     context.log('HTTP trigger function processed a request.');
-    const donorClient= new DonorClient();
+    const ngoClient= new NgoClient();
      if (req.method === 'POST')  {
          if(!req.params.id)
         await createProfile(context, req, req.body);
@@ -15,47 +15,47 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         return;
     }
 
-    async function createPostIdList (context: Context, request: HttpRequest, donor:Donor) {
+    async function createPostIdList (context: Context, request: HttpRequest, ngo:Ngo) {
        
 
-        if (donor.email &&donor.phone &&donor.address  ) {
-            if (!donor.id) {
-                donor.id = uuidv4();
+        if (ngo.email &&ngo.phone &&ngo.address  ) {
+            if (!ngo.id) {
+                ngo.id = uuidv4();
             }
-            donor.partitionKey = donor.id;
-            await donorClient.createUpdateProfile(donor);
+            ngo.partitionKey = ngo.id;
+            await ngoClient.createUpdateProfile(ngo);
             context.res = { status: 204 };
         } else {
             context.res = {
                 status: 400,
-                body: 'Please provide a valid donor Profile'
+                body: 'Please provide a valid ngo Profile'
             };
         }
     };
-    async function createProfile (context: Context, request: HttpRequest, donor:Donor) {
+    async function createProfile (context: Context, request: HttpRequest, ngo:Ngo) {
        
 
-        if (donor.email &&donor.phone &&donor.address  ) {
-            if (!donor.id) {
-                donor.id = uuidv4();
+        if (ngo.email &&ngo.phone &&ngo.address  ) {
+            if (!ngo.id) {
+                ngo.id = uuidv4();
             }
-            donor.partitionKey = donor.id;
-            await donorClient.createUpdateProfile(donor);
+            ngo.partitionKey = ngo.id;
+            await ngoClient.createUpdateProfile(ngo);
             context.res = { status: 204 };
         } else {
             context.res = {
                 status: 400,
-                body: 'Please provide a valid donor Profile'
+                body: 'Please provide a valid ngo Profile'
             };
         }
     };
     async function getProfile (context: Context,  userId:string) {
        
-        const donor = await donorClient.getProfile(userId);
-        console.log(donor);
+        const ngo = await ngoClient.getProfile(userId);
+        console.log(ngo);
         context.res = {
             status: 200,
-            body: donor
+            body: ngo
         };
     }
    
