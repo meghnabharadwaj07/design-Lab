@@ -29,7 +29,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     async function createDonation (context: Context, request: HttpRequest, donation:Donation) {
        
 
-        if (donation.donorId&& donation.postId  ) {
+        if (donation.donorId && donation.postId  ) {
             if (!donation.id) {
                 donation.id = uuidv4();
             }
