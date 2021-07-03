@@ -19,7 +19,7 @@ export default class DonationClient {
         const { item } = await this.client
             .database(this.databaseId)
             .container(this.containerName)
-            .items.upsert(Donation);
+            .items.upsert(donation);
 
        return item as any as Donation;
     };

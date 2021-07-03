@@ -6,7 +6,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     context.log('HTTP trigger function processed a request.');
     const donorClient= new DonorClient();
      if (req.method === 'POST')  {
-         if(!req.params.id)
+         
         await createProfile(context, req, req.body);
         return;
     }

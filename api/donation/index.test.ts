@@ -16,7 +16,7 @@ test('Can create a donation with proper Id', async () => {
 
     // Act
     var donation: Donation = createDonation(new Donation( donorId,postId));
-    
+    console.log(donation);
     var request = {
         method: 'POST',
                

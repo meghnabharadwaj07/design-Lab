@@ -6,7 +6,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     context.log('HTTP trigger function processed a request.');
     const ngoClient= new NgoClient();
      if (req.method === 'POST')  {
-         if(!req.params.id)
+         
         await createProfile(context, req, req.body);
         return;
     }
@@ -52,7 +52,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     async function getProfile (context: Context,  userId:string) {
        
         const ngo = await ngoClient.getProfile(userId);
-        console.log(ngo);
+        
         context.res = {
             status: 200,
             body: ngo
