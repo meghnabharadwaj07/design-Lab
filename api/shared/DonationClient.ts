@@ -23,12 +23,12 @@ export default class DonationClient {
 
        return item as any as Donation;
     };
-    public async getDonation (userId: string): Promise<Donation[]> {
+    public async getDonation (postId: string): Promise<Donation[]> {
         
         const querySpec = {
-            query: 'SELECT * FROM c WHERE c.ngoId=@userId ',
+            query: 'SELECT * FROM c WHERE c.postId=@postId ',
             parameters: [
-                { name: '@userId', value: userId }
+                { name: '@postId', value: postId }
                       ]
         };
         const { resources: results } = await this.client
@@ -41,12 +41,12 @@ export default class DonationClient {
 
         return results;
     };
-        public async getOneDonation (userId: string): Promise<Donation> {
+        public async getOneDonation (donationId: string): Promise<Donation> {
         
         const querySpec = {
-            query: 'SELECT * FROM c WHERE c.id=@userId ',
+            query: 'SELECT * FROM c WHERE c.id=@donationId ',
             parameters: [
-                { name: '@userId', value: userId }
+                { name: '@donationId', value: donationId }
                       ]
         };
         const { resources: results } = await this.client

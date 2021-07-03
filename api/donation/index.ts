@@ -6,8 +6,8 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     context.log('HTTP trigger function processed a request.');
     const donationClient= new DonationClient();
      if (req.method === 'POST')  {
-        await createDonation(context, req, req.body,req.params.id);
-        console.log(req.params.id);
+        await createDonation(context, req, req.body);
+        
         return;
     }
     if (req.method === 'GET')  {
@@ -26,16 +26,15 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
       
     }
 
-    async function createDonation (context: Context, request: HttpRequest, donation:Donation,ngoId:string) {
+    async function createDonation (context: Context, request: HttpRequest, donation:Donation) {
        
 
-        if (donation.startDate && donation.endDate  ) {
+        if (donation.donorId&& donation.postId  ) {
             if (!donation.id) {
                 donation.id = uuidv4();
             }
-            donation.ngoId=ngoId;
             donation.partitionKey = donation.id;
-            await donationClient.createUpdatedonation(donation);
+            await donationClient.createUpdateDonation(donation);
             context.res = { status: 204 };
         } else {
             context.res = {
@@ -44,7 +43,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
             };
         }
     };
-    async function updateDonations (context: Context, request: HttpRequest, donation:Donation,postId:string) {
+    async function updateDonations (context: Context, request: HttpRequest, donation:Donation,donationId:string) {
  
 
         if (donation.id===donationId ) {
@@ -58,9 +57,9 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
             };
         }
     };
-    async function getDonations (context: Context,  ngoId:string) {
+    async function getDonations (context: Context,  postId:string) {
        
-        const post = await donationClient.getdonation(ngoId);
+        const donation = await donationClient.getDonation(postId);
         context.res = {
             status: 200,
             body: donation
@@ -68,14 +67,14 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     }
     async function getAllDonations (context: Context) {
        
-        const post = await donationClient.getAllDonations();
+        const donation = await donationClient.getAllDonation();
         context.res = {
             status: 200,
             body: donation
         };
     }
         async function getDonation (context: Context,  donationId:string) {
-       console.log("hi");
+       
         const donation = await donationClient.getOneDonation(donationId);
         context.res = {
             status: 200,

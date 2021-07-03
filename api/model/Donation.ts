@@ -1,5 +1,5 @@
 export class Donation{
-    donationId: string | undefined;
+    id: string | undefined;
     donorId?: string;
     postId?: string;
     imageUrl:string|undefined;

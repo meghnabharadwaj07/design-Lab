@@ -28,7 +28,7 @@ test('Can create a ngo and get that with its id', async () => {
   
     
 });
-function createDonor(ngo:Ngo)
+function createNgo(ngo:Ngo)
 {
     ngo.id=uuidv4();
     ngo.partitionKey=ngo.id;

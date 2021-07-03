@@ -8,20 +8,18 @@ import { v4 as uuidv4 } from 'uuid';
 
 jest.setTimeout(500000);
 const donationClient = new DonationClient();
-const ngoId="1234";
+const donorId="1234";
+const postId="2345";
 test('Can create a donation with proper Id', async () => {
     // Arrange
     
 
     // Act
-    var donation: Donation = createDonation(new Donation('smile', 'test desc',new Date("11-12-21") ),ngoId);
+    var donation: Donation = createDonation(new Donation( donorId,postId));
     
     var request = {
         method: 'POST',
-        params: {
-            id: "ngoId",
-        },
-        
+               
         body: donation,
         url: 'http://testing.addDonation'
     };
@@ -32,39 +30,23 @@ test('Can create a donation with proper Id', async () => {
   
     
 });
-test('Can fetch all posts by NGO ID and not other posts', async () => {
+test('Can fetch all donation by Post ID and not other donation', async () => {
     // Arrange
-    var ngoDonation:Donation[]  = await donationClient.getDonation(ngoId);
+    var Donation:Donation[]  = await donationClient.getDonation(postId);
     let count=0;
-    for(let i=0;i<ngoDonation.length;i++)
+    for(let i=0;i<Donation.length;i++)
     {
-      if(ngoDonation[i].ngoId===ngoId)
+      if(Donation[i].postId===postId)
       count++;
 
-      expect(count).toEqual(ngoDonation.length);
+      expect(count).toEqual(Donation.length);
     }
     
 });
-test('Can fetch by posts by Post ID ', async () => {
-     var donation: Donation = createDonation(new Donation('smile', 'test desc',new Date("11-12-21") ),ngoId);
-    
-    var request = {
-        method: 'POST',
-        params: {
-            id: "ngoId",
-        },
-        
-        body: donation,
-        url: 'http://testing.addDonation'
-    };
-    await httpTrigger(context, request as any as HttpRequest);
-  
-    
-});
-function createDonation(donation:Donation,ngoId:string)
+
+function createDonation(donation:Donation)
 {
     donation.id=uuidv4();
     donation.partitionKey=donation.id;
-    donation.ngoId=ngoId;
     return donation;
 }
