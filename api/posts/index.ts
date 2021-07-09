@@ -60,7 +60,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     async function getPosts (context: Context,  ngoId:string) {
        
         const post = await postClient.getPost(ngoId);
-          if(!post)
+          if(post)
         {
         context.res = {
             status: 200,
@@ -86,7 +86,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         async function getPost (context: Context,  postId:string) {
        
         const post = await postClient.getOnePost(postId);
-          if(!post)
+          if(post)
         {
         context.res = {
             status: 200,
