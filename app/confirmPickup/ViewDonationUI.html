@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script  src="../confirmPickup/pickupManager.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FFE4B5;
+    font-color: white
+  }
+.navbar {
+  overflow: hidden;
+  background-color: #030327;
+  height: 50px;
+  font-size: 25px;
+  font-color: white;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+}
+
+.navbar a {
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.home {
+  background-color: #04AA6D;
+  position: absolute;
+  right: 150px;
+  top: 10px;
+}
+
+.logout {
+  position: absolute;
+  right: 40px;
+  top: 10px;
+}
+
+.navbar img {
+  float: left;
+  border-radius: 50%;
+}
+.search {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 30px;
+  margin-right:20px;
+  margin-bottom: 20px;
+}
+.search-container {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right:20px;
+  margin-bottom: 20px;
+  width: 100%;
+  height:25px;
+}
+.search-container button {
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #ccc;
+}
+
+.fullclick {
+  margin: 1em 0;
+  width: 80%;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+}
+
+.fullclick li {
+  list-style: none;
+  margin: 1em 0;
+  height: 200px;
+  padding: 20px 10px;
+  background: #f8f5f5;
+  position: relative;
+  transition: 400ms;
+}
+
+.leftimg img {
+  height: 200px;
+  width: 300px;
+  float: left;
+}
+
+.todelete {
+  opacity: 0;
+}
+.fullclick p {
+  padding-left: 20px;
+}
+
+
+.fullclick p a {
+  color: lime;
+  z-index: 2;
+  position: relative;
+}
+.fullclickheader {
+  font-size: 25px;
+}
+.fullclick a.main {
+  color: #85baff;
+  text-align: right;
+  display: block;
+  z-index: 1;
+}
+.fullclick li a.main::after {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  content: ' ';
+}
+.fullclick:hover a.main,
+.fullclick:focus-within a.main {
+  color: #cfe4ff;
+}
+
+.fullclick li a {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+.fullclick li:hover button,
+.fullclick li:focus-within button {
+  opacity: 1;
+}
+.fullclick li:hover, .fullclick li:focus-within {
+  background:#484848;
+  box-shadow: 0px 3px 6px #000;
+}
+.middle {
+  float: center;
+  margin-left: 320px;
+}
+.end {
+  float:right;
+
+}
+</style>
+<body>
+
+<div class="navbar">
+  <img src="profile.png" width=25px height=25px>
+  Shatadru Majumdar
+  <a class="home" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+  <a class="logout" href="#"><i class="fa fa-fw fa-user"></i> Logout</a>
+</div>
+<div class="search-container">
+  <form action="/action_page.php">
+  <input type="text" placeholder="Search.." name="search" style="width:90%;height:25px">
+  <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+</div>
+<ul class="fullclick" id="ul">
+  <li>
+    <div class="leftimg">
+    <img src="donation1.png" alt="Avatar">
+    </div>
+    <div class="middle">
+      <b>Christopher Nolan</b>
+      <br>
+      Contact number : 9999999999
+    </div>
+    <div class="end">
+      Contact Details
+     <button style="font-size:15px;position:absolute;right:300px;bottom:10px">Approve <i class="fa fa-thumbs-up"></i></button>
+     <button style="font-size:15px;position:absolute;right:220px;bottom:10px">Reject <i class="fa fa-close"></i></button>
+     <button style="font-size:15px;position:absolute;right:120px;bottom:10px">Calendar <i class="fa fa-calendar"></i></button>
+     <button style="font-size:15px;position:absolute;right:10px;bottom:10px">Completed <i class="fa fa-check"></i></button>
+    </div>
+  </li>
+</ul>
+</body>
+</html>

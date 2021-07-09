@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script  src="../ManagePost/postManager.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FFE4B5;
+}
+.navbar {
+  overflow: hidden;
+  background-color: #030327;
+  height: 50px;
+  font-size: 25px;
+  font-color: white;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+}
+.navbar h2 {
+  padding: 8px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  margin-top: -2px;
+  margin-left: 5px;
+  
+}
+.navbar a {
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.navbarA a {
+  position:absolute;right:160px;top:10px;font-size: 25px;padding-top: 10px;
+}
+
+.navbar img {
+  float: left;
+  border-radius: 50%;
+}
+.home {
+  background-color: #04AA6D;
+  position: absolute;
+  right: 150px;
+  top: 10px;
+}
+
+.logout {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 25px;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.5s;
+  width: 31%;
+  margin-top: 20px;
+  margin-left: 20px;
+  background-color: white;
+  float: left;
+}
+.card {
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+  width: 31%;
+  margin-top: 20px;
+  margin-left: 20px;
+  background-color: white;
+  float: left;
+  
+}
+.card a.card-block { color: white }
+.card img{
+  z-index: 2;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
+.card  button {
+  z-index: 5;
+  position:absolute;
+    top:10px;
+    right:10px;
+    float:right;
+    border: none;
+    border-radius: 12px;
+  color: rgb(8, 8, 8);
+  background: rgb(72, 83, 241);
+  font-size: 15px;
+}
+
+.container {
+  padding: 2px 16px;
+}
+</style>
+<body>
+
+<div class="navbar">
+  <img src="profile.png" width=25px height=25px>
+ <h2> Shatadru Majumdar</h2>
+  <div class="navbarA">
+    <a href="../ManagePost/createPostUI.html">Create Post<i class="fa fa-plus-circle" style="font-size:30px;padding-left:10px"></i></a>
+  </div>
+  <a class="logout" href="#" style="font-size:25px"><i class="fa fa-fw fa-user"></i>Logout</a>
+</div>
+<div id="PostList">
+
+</div>
+</body>
+</html>

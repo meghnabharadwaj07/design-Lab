@@ -17,7 +17,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
        await getDonation(context, req.params.id);// get post with id
         
         else
-        await getDonations(context, req.params.id);//get posts with ngo id
+        await getDonations(context, req.params.id);//get donations with post id
         return;
     }
     if (req.method === 'PUT')  {

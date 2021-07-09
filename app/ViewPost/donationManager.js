@@ -58,11 +58,12 @@ async function postData(url , data ) {
   
 async function getData(){
     
-    var response=await fetch('http://localhost:7071/api/posts/6af4b665-ab78-484e-97bb-1ea242515b17/ngo')
+    var response=await fetch('http://localhost:7071/api/posts')
    
      var postList=await response.json();
      console.log(postList);
      var ul = document.getElementById("card");
+     
      for(let i=0;i<postList.length;i++)
      {
          var postId="donationPageUI.html?"+postList[i].id;
@@ -122,6 +123,7 @@ async function getData(){
     var post=await response.json();
     var itemList=post[0].postItemList;
     var div= document.getElementById("ListOfItem");
+    
     for(let i=0;i<itemList.length;i++)
     {
       var name=itemList[i];
